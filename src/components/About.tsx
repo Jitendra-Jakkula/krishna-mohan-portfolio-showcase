@@ -2,10 +2,30 @@
 import React, { useEffect, useRef } from 'react';
 import { useInView } from '@/hooks/use-in-view';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { FileDown } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { threshold: 0.1 });
+  const { toast } = useToast();
+
+  const handleResumeDownload = () => {
+    // Create an anchor element
+    const link = document.createElement('a');
+    link.href = '/temp-resume.pdf';
+    link.download = 'Katuri_Krishna_Mohan_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    toast({
+      title: "Resume Downloaded",
+      description: "Thank you for downloading my resume!",
+      duration: 3000,
+    });
+  };
 
   return (
     <section id="about" ref={sectionRef} className="py-16 md:py-24 bg-background relative">
@@ -27,6 +47,16 @@ const About = () => {
               <p>
                 I'm constantly exploring new tools and technologies, aiming to build software that solves real-world problems.
               </p>
+              
+              <div className="mt-8">
+                <Button 
+                  onClick={handleResumeDownload}
+                  className="bg-accent hover:bg-accent/90 text-white flex items-center gap-2"
+                >
+                  <FileDown className="h-4 w-4" />
+                  Download Resume
+                </Button>
+              </div>
             </div>
           </div>
           
