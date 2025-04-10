@@ -10,7 +10,7 @@ const projectsData = [
     id: 1,
     title: "Online Recipe Sharing",
     description: "Platform to share and explore user-submitted recipes with a search filter.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
     tags: ["Java", "HTML", "MySQL"],
     techStack: "Java, HTML, MySQL",
     linkDemo: "#",
@@ -20,7 +20,7 @@ const projectsData = [
     id: 2,
     title: "CostMate",
     description: "A budgeting and expense tracker built with Java UI components.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
     tags: ["Java", "JDBC", "MySQL"],
     techStack: "Java, JDBC, MySQL",
     linkDemo: "#",
@@ -50,9 +50,9 @@ const Projects = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover opacity-60"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent"></div>
                 <div className="absolute bottom-4 left-4">
                   <div className="flex space-x-2">
                     {project.tags.map((tag) => (
