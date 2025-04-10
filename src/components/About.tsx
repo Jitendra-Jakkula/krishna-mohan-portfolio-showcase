@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { useInView } from '@/hooks/use-in-view';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -31,8 +32,12 @@ const About = () => {
           
           <div className={`flex flex-col items-center transition-all duration-1000 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent bg-blue-900/30 flex items-center justify-center">
-                <div className="text-6xl md:text-8xl font-bold text-accent/30">KM</div>
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent shadow-xl">
+                <img 
+                  src="/lovable-uploads/d22e3728-9e44-4aa4-807e-41ae6ae22906.png" 
+                  alt="Katuri Krishna Mohan" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-full">
                 <h3 className="text-xl font-cursive text-accent italic text-center font-semibold">Katuri Krishna Mohan</h3>
