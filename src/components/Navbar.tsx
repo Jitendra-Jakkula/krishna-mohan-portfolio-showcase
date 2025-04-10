@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, FileDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -56,9 +56,17 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
   }, []);
 
   const handleResumeClick = () => {
+    // Create an anchor element
+    const link = document.createElement('a');
+    link.href = '/temp-resume.pdf';
+    link.download = 'Katuri_Krishna_Mohan_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     toast({
-      title: "Resume",
-      description: "Resume download will be available soon!",
+      title: "Resume Downloaded",
+      description: "Thank you for downloading my resume!",
       duration: 3000,
     });
   };
@@ -90,9 +98,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="ml-4 bg-accent/10 border-accent text-accent hover:bg-accent hover:text-white"
+                className="ml-4 bg-accent/10 border-accent text-accent hover:bg-accent hover:text-white inline-flex items-center"
                 onClick={handleResumeClick}
               >
+                <FileDown className="h-4 w-4 mr-1" />
                 Resume
               </Button>
               <Button 
@@ -143,9 +152,10 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
           <Button 
             variant="outline" 
             size="sm" 
-            className="mt-2 w-full bg-accent/10 border-accent text-accent hover:bg-accent hover:text-white"
+            className="mt-2 w-full bg-accent/10 border-accent text-accent hover:bg-accent hover:text-white inline-flex items-center justify-center"
             onClick={handleResumeClick}
           >
+            <FileDown className="h-4 w-4 mr-1" />
             Resume
           </Button>
         </div>

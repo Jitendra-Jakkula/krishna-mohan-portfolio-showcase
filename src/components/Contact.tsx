@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { useInView } from '@/hooks/use-in-view';
-import { Mail, Phone, Linkedin, Github } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, FileDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -42,9 +42,17 @@ const Contact = () => {
   ];
 
   const handleResumeDownload = () => {
+    // Create an anchor element
+    const link = document.createElement('a');
+    link.href = '/temp-resume.pdf';
+    link.download = 'Katuri_Krishna_Mohan_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
     toast({
-      title: "Resume Download",
-      description: "Resume will be available for download soon!",
+      title: "Resume Downloaded",
+      description: "Thank you for downloading my resume!",
       duration: 3000,
     });
   };
@@ -80,11 +88,9 @@ const Contact = () => {
             <h3 className="text-xl font-semibold mb-4">Download My Resume</h3>
             <Button 
               onClick={handleResumeDownload}
-              className="btn-primary inline-flex items-center"
+              className="btn-primary inline-flex items-center group transition-all duration-300 hover:bg-accent"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+              <FileDown className="h-5 w-5 mr-2 group-hover:animate-bounce" />
               Download Resume
             </Button>
           </div>
