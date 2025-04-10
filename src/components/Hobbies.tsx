@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { useInView } from '@/hooks/use-in-view';
-import { BookOpen, Film, Cricket } from 'lucide-react';
+import { BookOpen, Film, Activity } from 'lucide-react';
 
 const hobbiesData = [
   {
@@ -21,7 +21,7 @@ const hobbiesData = [
   {
     id: 3,
     name: "Playing Cricket",
-    icon: <Cricket className="h-8 w-8" />,
+    icon: <Activity className="h-8 w-8" />,
     color: "from-blue-500 to-cyan-600",
     description: "Cricket keeps me physically active and teaches teamwork."
   }
